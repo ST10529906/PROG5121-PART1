@@ -1,5 +1,6 @@
 package partone;
 
+// Handles username, password, cellphone validation and login functions.
 public class Registration {
 
     public boolean checkUserName(String username) {
@@ -46,7 +47,7 @@ public class Registration {
         }
 
         if (!checkPasswordComplexity(password)) {
-            return "Password is not correctly formatted; please ensure that the password contains at least eight characters, a capital letter, a number, and a special character.";
+            return "Password is not correctly formatted; please ensure that your password contains at least eight characters, a capital letter, a number, and a special character.";
         }
 
         if (!checkCellPhoneNumber(cellPhone)) {
