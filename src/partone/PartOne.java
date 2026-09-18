@@ -2,6 +2,7 @@ package partone;
 
 import java.util.Scanner;
 
+// Main console application for registration and login.
 public class PartOne {
 
     public static void main(String[] args) {
