@@ -21,5 +21,20 @@ jobs:
           java-version: "25"
           distribution: "temurin"
 
+      - name: Download test libraries
+        run: |
+          mkdir -p ci-libs
+
+          curl -fsSL https://repo.maven.apache.org/maven2/junit/junit/4.13.2/junit-4.13.2.jar \
+            -o ci-libs/junit-4.13.2.jar
+
+          curl -fsSL https://repo.maven.apache.org/maven2/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar \
+            -o ci-libs/hamcrest-core-1.3.jar
+
       - name: Build and run tests with Ant
-        run: ant -noinput clean test
+        run: |
+          ant -noinput \
+            -Dlibs.junit_5.classpath= \
+            -Dlibs.hamcrest.classpath=ci-libs/hamcrest-core-1.3.jar \
+            -Dlibs.junit_4.classpath=ci-libs/junit-4.13.2.jar \
+            clean test
